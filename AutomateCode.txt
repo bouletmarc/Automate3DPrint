@@ -1,0 +1,37 @@
+; MOVE OUT THE WAY
+G1 F1500
+M140 S0
+M107
+G91 ;Relative positioning
+G1 E-2 F2700 ;Retract a bit
+G1 E-2 Z0.2 F2400 ;Retract and raise Z
+G1 X5 Y5 F3000 ;Wipe out
+G1 Z10 ;Raise Z more
+; MOVE CENTER
+G90 ;Absolute positionning
+G1 F1500 ; Set Speed Feedrate
+G1 X110 Y110 ; Relocate to Center
+G1 Z0.5 ; Move Z Axis down to Wiping area
+; COOLDOWN
+M106 S0 ;Turn-off fan / Fan On S:0
+M104 S0 ;Turn-off hotend / Set Extruder Target Temp S:0
+M140 S0 ;Turn-off bed / Set bed target temp S:0
+M105 ; Read current Temp
+M190 R35 ; Wait for bed current temp to cooldown to target temp S:35
+; MOVE PARTS
+G1 F3000 ; Set Speed Feedrate
+G1 X110 Y220 ; Remove Back Part
+G1 X110 Y0 ; Remove Front Part
+G1 X110 Y110 ; Relocate to Center
+G1 X80 Y110 ; Move to Side1
+G1 X80 Y220 ; Remove Back Part
+G1 X80 Y0 ; Remove Front Part
+G1 X80 Y110 ; Relocate to Center(Sided)
+G1 X140 Y110 ; Move to Side2
+G1 X140 Y220 ; Remove Back Part
+G1 X140 Y0 ; Remove Front Part
+G1 X140 Y110 ; Relocate to Center(Sided)
+G1 X110 Y110 ; Relocate to Center
+G1 X110 Y220 ; Remove Back Part
+G1 X110 Y0 ; Remove Front Part
+G1 X110 Y110 ; Relocate to Center
